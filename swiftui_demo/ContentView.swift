@@ -24,7 +24,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List(pokemonList,id: \.name) { item in
-                NavigationLink(destination: LandmarkDetail()){
+//                NavigationLink(destination: LandmarkDetail()){
                     HStack(alignment:.center){
                         Image(item.imagename)
                             .padding()
@@ -37,9 +37,15 @@ struct ContentView: View {
                             }
                         }
                     }
-                }
+//                }
             }
-            .navigationBarTitle(Text("历史分享"))
+            .navigationBarTitle(Text("历史分享"),displayMode: .inline)
+
+                .navigationBarItems(leading: Button("消息", action: {
+                    
+                }), trailing: Button("我的客户", action: {
+                    
+                }))
         }
     }
 }
