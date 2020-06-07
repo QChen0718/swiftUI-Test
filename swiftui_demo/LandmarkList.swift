@@ -11,7 +11,6 @@ import SwiftUI
 struct LandmarkList: View {
     @EnvironmentObject private var userData: UserData
     var body: some View {
-        NavigationView {
             List {
 //                isOn 点击事件对 userData.showFavoritesOnly 取反
                 Toggle(isOn: $userData.showFavoritesOnly) {
@@ -28,7 +27,6 @@ struct LandmarkList: View {
                 }
             }
         .navigationBarTitle(Text("列表"))
-        }
     }
 }
 
