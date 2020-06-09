@@ -23,6 +23,7 @@ struct CategoryRow: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top, spacing: 0) {
                     ForEach(self.items){ landmark in
+//                        给图片添加点击响应后默认系统会有一个点击效果，图片上会出现一层蒙层
                         NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
                             CategoryItem(landmark: landmark)
                         }

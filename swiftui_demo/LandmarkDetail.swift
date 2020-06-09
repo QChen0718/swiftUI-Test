@@ -10,6 +10,10 @@ import SwiftUI
 
 struct LandmarkDetail: View {
     @EnvironmentObject var userData: UserData
+    @State private  var name = ""
+    @State private var age = 18
+    @State private var password = ""
+    
     var landmark: Landmark
     
     var landmarkIndex: Int {
@@ -41,6 +45,7 @@ struct LandmarkDetail: View {
                             Image(systemName: "star").foregroundColor(Color.gray)
                         }
                     }
+                    
                 }
                 HStack(alignment:.top) {
                     Text(landmark.park).font(.subheadline)
@@ -48,6 +53,31 @@ struct LandmarkDetail: View {
                     Text(landmark.state).font(.subheadline)
                 }
             }
+//                1
+//            TextField("你的名字", text: $name)
+//            .textFieldStyle(RoundedBorderTextFieldStyle())
+//                .keyboardType(.numberPad)
+//                2
+//                TextField("你的名字", text: $name)
+//            .padding()
+//                    .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.red,lineWidth: 3))
+//                    3.结束编辑时取得使用者输入的文字
+            TextField("你的名字",text: $name,onEditingChanged: { (editing) in
+                print("onEditingChanged",editing)
+            }){
+                print(self.name)
+            }
+        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                4.按钮点击输出键盘输入的内容
+                TextField("你的年纪", value: $age, formatter: NumberFormatter())
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding()
+            Button("输出年纪"){
+                print(self.age)
+            }
+//                5.密码键盘
+                SecureField("password", text: $password)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
         .padding()
             Spacer()
         }

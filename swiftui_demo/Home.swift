@@ -69,7 +69,7 @@ struct CategoryHome: View {
 struct FeaturedLandmarks: View {
     var landmarks: [Landmark]
     var body: some View {
-        landmarks[0].image.resizable()
+        landmarks[1].image.resizable()
     }
     
     
