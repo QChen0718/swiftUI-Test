@@ -34,7 +34,6 @@ extension BaseService: TargetType {
     public var method: Method{
         switch self {
             case let .general(_,method,_,_):
-    //            中文转码
                 return method
         }
     }

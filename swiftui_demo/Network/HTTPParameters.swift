@@ -27,9 +27,11 @@ class HttpParameters: NSObject {
 //        版本号
         let APP_VERSION:String? = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         
-        return ["version": APP_VERSION ?? "","apiVersion": apiVersion, "appKey": APP_KEY, "timeStamp": timeStr, "sign": mdSignStr]
+        return ["version": APP_VERSION ?? "","apiVersion": apiVersion, "appKey": APP_KEY, "timeStamp": timeStr, "sign": mdSignStr,"appToken":"xPNDoG47U/W/HExBvZ7VU45U/X5tPII6EqnPak9VuQnHz+47b/6aMA=="]
     }
     open class func getFirstHeader()-> [String: String] {
         return [ApiVersionKey: "1.0.0"]
     }
+    
+    
 }

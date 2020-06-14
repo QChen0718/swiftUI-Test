@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CategoryHome: View {
+    
     var categories: [String:[Landmark]]{
         Dictionary(
         grouping: landmarkData) { (land) -> String in
@@ -32,17 +33,6 @@ struct CategoryHome: View {
                 .imageScale(.large)
             .accessibility(label: Text("User Profile"))
             .padding()
-        }
-    }
-    init() {
-       startLoad()
-    }
-    func startLoad() {
-//        请求网络数据
-        NetworkManager().requestNetWork(REQUEST_GET_CUSTOMERLIST,method:.get,paresSuccess:{(responseObj:Any?) in
-            
-        }){(_) in
-            
         }
     }
     var body: some View {
