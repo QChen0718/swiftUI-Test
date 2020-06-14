@@ -34,8 +34,17 @@ struct CategoryHome: View {
             .padding()
         }
     }
-    
-    
+    init() {
+       startLoad()
+    }
+    func startLoad() {
+//        请求网络数据
+        NetworkManager().requestNetWork(REQUEST_GET_CUSTOMERLIST,method:.get,paresSuccess:{(responseObj:Any?) in
+            
+        }){(_) in
+            
+        }
+    }
     var body: some View {
         NavigationView {
             List {

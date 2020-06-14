@@ -10,7 +10,15 @@ import SwiftUI
 
 struct CustomerView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(0..<5){_ in
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                
+                .navigationBarTitle("客户",displayMode: .inline)
+            }
+            
+        }
+        
     }
 }
 
