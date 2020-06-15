@@ -9,8 +9,32 @@
 import SwiftUI
 
 struct CustomerView: View {
+    fileprivate var customerlistvm = CustomerListVM()
+    fileprivate var modelArray:[CustomerListDataModel] = []
+    @State private var names = ""
+    init() {
+       loadData()
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                NavigationLink(destination: (CustomerViewDetail())){
+                    Text(names)
+                }
+
+                Button(action: {
+                    self.loadData()
+                    }) {
+                        Text("Start").font(.largeTitle).foregroundColor(.red)
+                }
+            }
+        }
+    }
+    func loadData() {
+        self.customerlistvm.startLoad { modelarray in
+            
+            self.names = modelarray?[0].name ?? ""
+        }
     }
 }
 

@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CategoryHome: View {
+    
     var categories: [String:[Landmark]]{
         Dictionary(
         grouping: landmarkData) { (land) -> String in
@@ -34,8 +35,6 @@ struct CategoryHome: View {
             .padding()
         }
     }
-    
-    
     var body: some View {
         NavigationView {
             List {
