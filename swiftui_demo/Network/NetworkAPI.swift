@@ -7,7 +7,8 @@
 //
 
 import Foundation
-
+// 图片下载URL
+let HTTP_IMAGE_DOWNLOAD_REQUEST_URL             = "https://rescdn.xiaohu.in/"
 #if DEBUG
 //--------测试https
 let HTTP_REQUEST_URL                            = "https://test-api4app.1caifu.com/api/"

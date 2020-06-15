@@ -12,12 +12,12 @@ class CustomerListModel: BaseModel{
     var data:[CustomerListDataModel]?
     
 }
-class CustomerListDataModel:BaseModel,ObservableObject{
-   @Published var lastLoginTime:String = ""
-   @Published var tagList:[String] = []
-   @Published var id :Int = 0
-   @Published var totalPrice:String = ""
-   @Published var type:Int = 0
-   @Published var photo:String = ""
-   @Published var name:String = ""
+class CustomerListDataModel:BaseModel{
+    var lastLoginTime:String = ""
+    var tagList:[String] = []
+    var id :Int = 0
+    var totalPrice:String = ""
+    var type:Int = 0
+    var photo:String = ""
+    var name:String = ""
 }

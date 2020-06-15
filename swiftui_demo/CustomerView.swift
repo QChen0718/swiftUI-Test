@@ -7,19 +7,39 @@
 //
 
 import SwiftUI
-
+import SDWebImageSwiftUI
 struct CustomerView: View {
     fileprivate var customerlistvm = CustomerListVM()
-    fileprivate var modelArray:[CustomerListDataModel] = []
-    @State private var names = ""
+   @State fileprivate var modelArray:[CustomerListDataModel] = []
     init() {
-       loadData()
+        
     }
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: (CustomerViewDetail())){
-                    Text(names)
+                List(self.modelArray,id: \.id){ model in
+                    NavigationLink(destination: (CustomerViewDetail())){
+                        HStack{
+                            WebImage(url: URL(string:HTTP_IMAGE_DOWNLOAD_REQUEST_URL +  model.photo)).resizable().scaledToFit().frame(width: 54, height: 54, alignment: .center)
+                            VStack(alignment:.leading){
+                                Text(model.name)
+                                Text("最近访问："+model.lastLoginTime)
+                                HStack{
+                                    ForEach(model.tagList){ tagname in
+                                        Text("测试")
+                                    }
+                                    
+                                    Text("内容")
+                                }
+                            }
+                            Spacer()
+                            VStack(alignment:.trailing){
+                                Text(model.totalPrice)
+                                Text("累计交易")
+                            }
+                        }
+                        
+                    }
                 }
 
                 Button(action: {
@@ -28,12 +48,12 @@ struct CustomerView: View {
                         Text("Start").font(.largeTitle).foregroundColor(.red)
                 }
             }
+        .navigationBarTitle("客户")
         }
     }
-    func loadData() {
+     func loadData() {
         self.customerlistvm.startLoad { modelarray in
-            
-            self.names = modelarray?[0].name ?? ""
+            self.modelArray = modelarray ?? []
         }
     }
 }
