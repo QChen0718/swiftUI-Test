@@ -12,24 +12,22 @@ struct CustomerView: View {
     fileprivate var customerlistvm = CustomerListVM()
    @State fileprivate var modelArray:[CustomerListDataModel] = []
     init() {
-        
+       loadData()
     }
     var body: some View {
         NavigationView {
             VStack {
-                List(self.modelArray,id: \.id){ model in
+                List(self.modelArray){ model in
                     NavigationLink(destination: (CustomerViewDetail())){
                         HStack{
                             WebImage(url: URL(string:HTTP_IMAGE_DOWNLOAD_REQUEST_URL +  model.photo)).resizable().scaledToFit().frame(width: 54, height: 54, alignment: .center)
                             VStack(alignment:.leading){
                                 Text(model.name)
-                                Text("最近访问："+model.lastLoginTime)
+                                Text("最近访问：" + model.lastLoginTime)
                                 HStack{
-                                    ForEach(model.tagList){ tagname in
-                                        Text("测试")
+                                    ForEach(model.tagList,id: \.self){ tagname in
+                                        Text(tagname)
                                     }
-                                    
-                                    Text("内容")
                                 }
                             }
                             Spacer()
@@ -37,11 +35,14 @@ struct CustomerView: View {
                                 Text(model.totalPrice)
                                 Text("累计交易")
                             }
-                        }
-                        
+                        }.padding(.top,10)
+                            .padding(.bottom,10)
+                            
+
                     }
                 }
-
+                .padding(.leading, -5)
+//
                 Button(action: {
                     self.loadData()
                     }) {
@@ -54,10 +55,10 @@ struct CustomerView: View {
      func loadData() {
         self.customerlistvm.startLoad { modelarray in
             self.modelArray = modelarray ?? []
+            print(self.modelArray)
         }
     }
 }
-
 struct CustomerView_Previews: PreviewProvider {
     static var previews: some View {
         CustomerView()

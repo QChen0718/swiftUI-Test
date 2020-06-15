@@ -12,8 +12,8 @@ class CustomerListModel: BaseModel{
     var data:[CustomerListDataModel]?
     
 }
-class CustomerListDataModel:BaseModel{
-    var lastLoginTime:String = ""
+class CustomerListDataModel:BaseModel, Identifiable{
+    var lastLoginTime:String = "无"
     var tagList:[String] = []
     var id :Int = 0
     var totalPrice:String = ""

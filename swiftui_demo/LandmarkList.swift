@@ -16,6 +16,9 @@ struct LandmarkList: View {
                 Toggle(isOn: $userData.showFavoritesOnly) {
                     Text("Show Favorites Only")
                 }
+                VStack{
+                    Text("测试")
+                }
                 ForEach(userData.landmarks){ landmark in
 //                    
                     if !self.userData.showFavoritesOnly || landmark.isFavorite {

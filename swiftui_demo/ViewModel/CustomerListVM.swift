@@ -14,7 +14,6 @@ class CustomerListVM:NSObject {
             let model = responseObj as? CustomerListModel
             if let succeck = model?.isSuccess,succeck{
                 modelArrayBlock(model?.data)
-                MLog.debug(model?.data?[0].name)
             }
         }){(_) in
             

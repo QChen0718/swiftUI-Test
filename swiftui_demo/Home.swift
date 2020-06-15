@@ -23,6 +23,7 @@ struct CategoryHome: View {
         }
     }
     
+    
     @State var showingProfile = false
     
     var profileButton: some View {
@@ -48,7 +49,7 @@ struct CategoryHome: View {
                 
                 ForEach(categories.keys.sorted(),id: \.self) {
                     key in
-                    
+
                     CategoryRow(categoryName: key, items: self.categories[key]!)
                 }
             .listRowInsets(EdgeInsets())
